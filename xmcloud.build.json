@@ -1,6 +1,6 @@
 {
   "deployItems": {
-    "modules": []
+    "modules": ["Foundation.*", "Feature.*", "project.*"]
   },
   "buildTargets": 
   [
