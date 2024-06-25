@@ -33,7 +33,6 @@ jobs:
 
   deploy-staging:
     uses: ./.github/workflows/deploy_xmCloud.yml
-    if: github.repository_owner == 'Sitecore' && ((github.event.pull_request.head.repo.full_name == github.repository) || (github.event_name == 'push'))
     needs: build-dotnet 
     with:
       environmentName: Staging
@@ -43,7 +42,6 @@ jobs:
       XM_CLOUD_ENVIRONMENT_ID: ${{ secrets.STAGING_XM_CLOUD_ENVIRONMENT_ID }}
 
   promote-to-prod:
-    if: github.ref == 'refs/heads/main'
     needs: deploy-staging 
     uses: ./.github/workflows/promote_xmCloud.yml
     with:
