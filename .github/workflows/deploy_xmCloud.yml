@@ -47,5 +47,5 @@ jobs:
             echo "Operation Failed."
             exit -1
         fi
-        echo "Deployment Completed"
-        echo "deploymentId=result.DeploymentId" >> "$GITHUB_OUTPUT"
+        echo "Deployment $result.DeploymentId Completed"
+        echo "deploymentId=$result.DeploymentId" >> "$GITHUB_OUTPUT"
