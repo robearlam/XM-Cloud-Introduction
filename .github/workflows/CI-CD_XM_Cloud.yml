@@ -33,6 +33,8 @@ jobs:
 
   deploy-staging:
     uses: ./.github/workflows/deploy_xmCloud.yml
+    outputs:
+      completedDeploymentId: ${{ steps.run-deployment.outputs.completedDeploymentId }}
     with:
       environmentName: Staging
     secrets:
@@ -45,7 +47,7 @@ jobs:
     uses: ./.github/workflows/promote_xmCloud.yml
     with:
       environmentName: Production
-      deploymentId: ${{ needs.deploy-staging.outputs.deploymentId }}
+      deploymentId: ${{ needs.deploy-staging.outputs.completedDeploymentId }}
     secrets:
       XM_CLOUD_CLIENT_ID: ${{ secrets.XM_CLOUD_CLIENT_ID }}
       XM_CLOUD_CLIENT_SECRET: ${{ secrets.XM_CLOUD_CLIENT_SECRET }}

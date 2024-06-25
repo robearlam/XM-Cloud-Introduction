@@ -20,7 +20,7 @@ jobs:
     name: Deploy the XM Cloud ${{ inputs.environmentName }} Site
     runs-on: ubuntu-latest
     outputs:
-      deploymentId: ${{ steps.run-deployment.outputs.deploymentId }}
+      completedDeploymentId: ${{ steps.run-deployment.outputs.completedDeploymentId }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v2
@@ -49,4 +49,4 @@ jobs:
             exit -1
         fi
         echo "Deployment $deploymentId Completed"
-        echo "deploymentId=$deploymentId" >> "$GITHUB_OUTPUT"
+        echo "completedDeploymentId=$deploymentId" >> "$GITHUB_OUTPUT"
