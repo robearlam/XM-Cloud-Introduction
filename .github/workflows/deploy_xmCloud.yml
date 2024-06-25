@@ -48,4 +48,4 @@ jobs:
             exit -1
         fi
         echo "Deployment Completed"
-        echo "DeploymentId=result.deploymentId" >> "$GITHUB_OUTPUT"
+        echo "deploymentId=result.DeploymentId" >> "$GITHUB_OUTPUT"
