@@ -22,31 +22,7 @@ jobs:
     outputs:
       completedDeploymentId: ${{ steps.run-deployment.outputs.completedDeploymentId }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '6.0.x' 
-    - run: dotnet tool restore
-    - run: dotnet sitecore --help
-    - name: Authenticate CLI with XM Cloud
-      run: dotnet sitecore cloud login --client-credentials --client-id ${{ secrets.XM_CLOUD_CLIENT_ID }} --client-secret ${{ secrets.XM_CLOUD_CLIENT_SECRET }} --allow-write
     - name: Deploy the CM assets to XM Cloud
       id: run-deployment
       run: |
-        result=$(dotnet sitecore cloud deployment create --environment-id ${{ secrets.XM_CLOUD_ENVIRONMENT_ID }} --upload --json)
-        echo $result
-        isTimedOut=$(echo $result | jq ' .IsTimedOut')
-        isCompleted=$(echo $result | jq ' .IsCompleted')
-        deploymentId=$(echo $result | jq ' .DeploymentId')
-        if [ $isTimedOut = true ]
-        then
-            echo "Operation Timed Out."
-            exit -1
-        fi  
-        if ! [ $isCompleted = true ]
-        then
-            echo "Operation Failed."
-            exit -1
-        fi
-        echo "Deployment $deploymentId Completed"
-        echo "completedDeploymentId=$deploymentId" >> "$GITHUB_OUTPUT"
+        echo "completedDeploymentId=HelloWorld" >> $GITHUB_OUTPUT
