@@ -6,6 +6,9 @@ on:
       environmentName:
         required: true
         type: string
+    outputs:
+      completedDeploymentId:
+        value: '${{ jobs.deploy.outputs.completedDeploymentId }}'
     secrets:
       XM_CLOUD_CLIENT_ID:
         required: true
