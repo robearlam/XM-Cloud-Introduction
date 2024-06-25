@@ -33,8 +33,6 @@ jobs:
 
   deploy-staging:
     uses: ./.github/workflows/deploy_xmCloud.yml
-    outputs:
-      completedDeploymentId: ${{ steps.run-deployment.outputs.completedDeploymentId }}
     with:
       environmentName: Staging
     secrets:
