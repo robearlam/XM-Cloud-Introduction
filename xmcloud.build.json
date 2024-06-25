@@ -4,7 +4,9 @@
   },
   "buildTargets": 
   [
-
+    "./src/Environment/platform/Mvp.Environment.Platform.csproj",
+    "./src/Project/MvpSite/platform/Mvp.Project.MvpSite.Platform.csproj",
+    "./src/Project/Sugcon/platform/Project.Sugcon.Platform.csproj"
   ],
   "renderingHosts": {
   },
